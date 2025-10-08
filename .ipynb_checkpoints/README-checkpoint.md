@@ -7,6 +7,16 @@
 
 All code comments in this repo are in **English**.
 
+
+# running process
+
+1. `python medical_data/make_rag_inputs.py   --datasets liveqa pubmedqa medquad   --split train   --limit 50   --out-dir tests/_min_input`
+
+2. `CUDA_VISIBLE_DEVICES=0 python rag/generate_with_vllm.py   --in-jsonl tests/_min_input/rag_generation_outputs_liveqa.jsonl   --out-jsonl tests/_min_input/rag_generation_outputs_liveqa_qwen.jsonl   --backend qwen   --gpu-util 0.5   --max-len 6144   --max-new-tokens 256   --temperature 0.2`
+
+3. 
+ `python smokeopenai.py   --eval-backend gpt-4o-mini   --input-dir tests/_min_input   --output-dir tests/_min_output   --limit 10   --claims-jsonl tests/_min_output/claims_dump.jsonl`
+
 ---
 
 ## ✨ Why this repo?
@@ -54,25 +64,12 @@ MRAGChecker/
 └─ examples/
    └─ checking_inputs.json             # sample packed input for evaluator
 ```
-## Python version
-Python 3.10.18
+
 ---
-## Dataset usaed and union format
-We download the different types of datasets for the MRAGChecker
-1. Chart-MRAG  https://huggingface.co/datasets/ymyang/Chart-MRAG/tree/main
-Paper name: Benchmarking Multimodal RAG through a Chart-based Document Question-Answering Generation Framework
-2. MRAG:
-       + corpus: https://drive.google.com/file/d/1atwkNXH3aEtCLuqimZoB1Mifj5CwL3CL/view
-       + dataset: 
-5. WebQA: https://drive.google.com/drive/folders/1ApfD-RzvJ79b-sLeBx1OaiPNUYauZdAZ
-6. VisRAG:  
-
-
 
 ## 🔌 Unified model interface
 
 Create a thin abstract interface so every backend behaves the same at call‑sites.
-
 
 ```python
 # mragchecker/backends/base.py
@@ -226,7 +223,7 @@ pip install -e .
 ### Env (choose any backend)
 ```bash
 # GPT (OpenAI)
-export OPENAI_API_KEY=sk-...
+
 export OPENAI_MODEL=gpt-4o            # or your Azure deployment name
 # export OPENAI_BASE_URL=...          # Azure / OpenAI-compatible proxy
 
