@@ -1,3 +1,5 @@
+
+[News: new code avaible https://github.com/JoyDajunSpaceCraft/MedicalRagChecker ]
 # MRAGChecker
 
 > A generalized, backend‑agnostic **RAG & Multimodal** checker that works with **OpenAI GPT**, **Amazon Bedrock (Claude)**, and **open‑source models via vLLM**. Split into two pluggable parts:
