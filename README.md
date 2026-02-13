@@ -1,6 +1,7 @@
 
-[News: new code avaible https://anonymous.4open.science/r/MedicalRagChecker-752E/README.md]
+
 # MRAGChecker
+[News: new code avaible https://anonymous.4open.science/r/MedicalRagChecker-752E/README.md]
 
 > A generalized, backend‑agnostic **RAG & Multimodal** checker that works with **OpenAI GPT**, **Amazon Bedrock (Claude)**, and **open‑source models via vLLM**. Split into two pluggable parts:
 >
